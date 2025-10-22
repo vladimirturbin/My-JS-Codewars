@@ -7,9 +7,15 @@ snail = function(array) {
   let i = 0;
   let j = 0;
 
-  if (iHighest == 0) {
-    return result
+  // empty argument case
+  if ((iHighest == 0) && (jHighest == -1)) {
+    return result;
   }
+  // single element case
+  if ((iHighest == 0) && (jHighest == 0)) {
+    return array[0];
+  }
+  // other (square) case
   do {
     result.push(array[i][j])
     // going right
