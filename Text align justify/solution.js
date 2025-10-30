@@ -1,4 +1,4 @@
-justify('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis dolor mauris', 30)
+justify('aa a aaa aa aa aaaa aaa aaa aaaaa aa aaaa aaaa', 10)
 function justify(text, width) {
     const words = text.split(' ');
     let lines = [];
@@ -20,20 +20,20 @@ function justify(text, width) {
     console.log(lines)
 
     for (let line of lines) {
-      const wordsCount = line.split(" ").length;
-      const surplus = width = line.length;
-      const singleSurplus = surplus % (wordsCount - 1)
-      let rest = surplus - surplus % (wordsCount - 1) * (wordsCount - 1);
+      const spacesCount = line.split(" ").length - 1;
+      const surplus = width - line.length;
+      const singleSurplus = (surplus - surplus % spacesCount) / spacesCount;
+      let rest = surplus % spacesCount;
 
       let words = line.split(" ");
       for(i = 0; i < (words.length - 1); i++) {
-        words[i] = words.concat(" ".repeat(singleSurplus))
+        words[i] = words[i].concat(" ".repeat(singleSurplus))
         if (rest > 0) {
-          words[i].concat(" ");
+          words[i] = words[i].concat(" ");
           rest--;
         }
       }
-      console.log(line);
+      console.log(words.join(''));
     }
   }
 
